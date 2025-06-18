@@ -1,14 +1,14 @@
 import { createStore } from "redux";
 
 const start = {
-  todolist: []
+  listList: []
 };
 
 
 function reducer(state = start, action) {
 
   let newState = { ...state };
-  let list = newState.todolist;
+  let list = newState.listList;
 
   switch (action.type) {
     case 'ADD': {
@@ -22,7 +22,7 @@ function reducer(state = start, action) {
         transactionType: type
       };
 
-      newState.todolist = [...list, newItem];
+      newState.listList = [...list, newItem];
 
       newState.total += type === 'income' ? amount : -amount;
       return newState;
@@ -35,7 +35,7 @@ function reducer(state = start, action) {
         const amount = itemToDelete.transactionType === 'income' ? itemToDelete.text : -itemToDelete.text;
         newState.total -= amount;  
       }
-      newState.todolist = list.filter((item) => item.id !== action.id);
+      newState.listList = list.filter((item) => item.id !== action.id);
       return newState;
     }
     default: return state;

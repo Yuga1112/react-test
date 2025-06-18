@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 
 const All = () => {
 
-    const todolist = useSelector((state) => state.todolist);
+  const listList = useSelector((state) => state.listList);
 
-    const total = todolist.reduce((sum, item) => {
+  const total = listList.reduce((sum, item) => {
         const amount = parseInt(item.text, 10);
         if (isNaN(amount)) return sum;
         return sum + (item.transactionType === 'income' ? amount : -amount);

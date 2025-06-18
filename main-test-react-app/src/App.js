@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import Todo from './component/Todo';
+import List from './component/List';
 import Tndlq from './component/Tndlq';
 
 
@@ -8,27 +8,27 @@ import { useState } from 'react';
 import All from './component/All';
 
 const start = {
-  todolist: []
+  listList: []
 };
 
 function reducer(state = start, action) {
 
     switch (action.type) {
       case 'ADD': {
-        const newId = state.todolist.length > 0
-          ? state.todolist[state.todolist.length - 1].id + 1
+        const newId = state.listList.length > 0
+          ? state.listList[state.listList.length - 1].id + 1
           : 0;
 
         const newList = [
-          ...state.todolist,
+          ...state.listList,
           { id: newId, text: action.text, transactionType: action.transactionType }
         ];
 
-        return { ...state, todolist: newList };
+        return { ...state, listList: newList };
       }
     case 'DELETE': {
-      const newList = state.todolist.filter(todo => todo.id !== action.id);
-      return { ...state, todolist: newList };
+        const newList = state.listList.filter(list => list.id !== action.id);
+        return { ...state, listList: newList };
     }
     default:
       return state;
@@ -48,7 +48,7 @@ function App() {
 
       <Provider store={store}>
         <Tndlq type={type} setType={setType} />
-        <Todo type={type} />
+        <List type={type} />
         <All></All>
       </Provider>
     </div>

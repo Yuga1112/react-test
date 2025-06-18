@@ -11,11 +11,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 
 
-const Todo = ({ type }) => {
+const List = ({ type }) => {
 
   const [input, setInput] = useState('');
 
-  const todolist = useSelector((state) => state.todolist);
+  const listList = useSelector((state) => state.listList);
 
   const dispatch = useDispatch();
 
@@ -45,11 +45,11 @@ const Todo = ({ type }) => {
       <button onClick={add}>등록</button>
       
       <ul>
-        {todolist.map(todo => (
-          <li key={todo.id}>
-            [{todo.transactionType === 'income' ? '수입' : '지출'}]
-            {todo.text}
-            <button onClick={() => dispatch({ type: 'DELETE', id: todo.id })}>
+        {listList.map(list => (
+          <li key={list.id}>
+            [{list.transactionType === 'income' ? '수입' : '지출'}]
+            {list.text}
+            <button onClick={() => dispatch({ type: 'DELETE', id: list.id })}>
               삭제
             </button>
           </li>
@@ -59,4 +59,4 @@ const Todo = ({ type }) => {
   )
 }
 
-export default Todo
+export default List
